@@ -61,25 +61,27 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground transition-all duration-300">
         
         {/* Google Analytics (gtag.js) */}
-        <Script
+        <script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-7LF0FFCCKK"
-          strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-7LF0FFCCKK');
-          `}
-        </Script>
+        <script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-7LF0FFCCKK');
+            `,
+          }}
+        />
 
         {/* Google AdSense */}
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6821531199235214"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
 
         {/* Simple inline script to prevent theme flash */}
