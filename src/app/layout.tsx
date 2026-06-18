@@ -5,6 +5,8 @@ import ThemeToggle from '@/components/ThemeToggle';
 import Link from 'next/link';
 import { Calculator, Settings, BookOpen } from 'lucide-react';
 import { getCurrentYear } from '@/utils/date';
+import Script from 'next/script';
+
 
 const currentYear = getCurrentYear();
 
@@ -58,6 +60,28 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-all duration-300">
         
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-7LF0FFCCKK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-7LF0FFCCKK');
+          `}
+        </Script>
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6821531199235214"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         {/* Simple inline script to prevent theme flash */}
         <script
           dangerouslySetInnerHTML={{
