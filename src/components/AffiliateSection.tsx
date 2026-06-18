@@ -126,17 +126,19 @@ export default function AffiliateSection({ category }: AffiliateSectionProps) {
             key={product.id}
             className="border border-border/80 rounded-xl bg-muted/20 p-5 flex flex-col justify-between hover:border-primary/50 hover:bg-muted/30 transition-all duration-300 relative group"
           >
-            {product.badge && (
-              <span className="absolute top-4 right-4 bg-primary/10 text-primary border border-primary/20 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                {product.badge}
-              </span>
-            )}
-
-            <div>
+            <div className="flex items-start justify-between gap-4 mb-2">
               <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
                 {product.provider}
               </span>
-              <h4 className="text-lg font-bold text-foreground mt-0.5 group-hover:text-primary transition-colors flex items-center gap-1">
+              {product.badge && (
+                <span className="bg-primary/10 text-primary border border-primary/20 text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0">
+                  {product.badge}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <h4 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-1">
                 {product.name}
               </h4>
 
@@ -167,8 +169,8 @@ export default function AffiliateSection({ category }: AffiliateSectionProps) {
               {product.features && (
                 <ul className="space-y-1.5 mb-5">
                   {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-[11px] text-foreground/80 font-medium">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary/75"></span>
+                    <li key={idx} className="flex items-start gap-2 text-[11px] text-foreground/80 font-medium">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/75 mt-1.5 flex-shrink-0"></span>
                       <span>{feature}</span>
                     </li>
                   ))}

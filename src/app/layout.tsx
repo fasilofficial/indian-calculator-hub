@@ -102,17 +102,6 @@ export default function RootLayout({
                 <span>Calculators</span>
               </Link>
               
-              <Link 
-                href="/admin" 
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-foreground transition-colors"
-                title="Management Dashboard"
-              >
-                <Settings className="h-4 w-4" />
-                <span className="hidden md:inline">Dashboard</span>
-              </Link>
-
-              <div className="h-4 w-[1px] bg-border/80 hidden sm:block"></div>
-
               {/* Theme Toggle */}
               <ThemeToggle />
             </nav>
@@ -127,7 +116,7 @@ export default function RootLayout({
         {/* Global Footer */}
         <footer className="w-full border-t border-border bg-muted/30 mt-auto py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
               {/* About Column */}
               <div className="space-y-4 md:col-span-2">
@@ -153,17 +142,6 @@ export default function RootLayout({
                   <li><Link href="/#all-calculators" className="hover:text-primary transition-colors">Home & Auto Loans</Link></li>
                   <li><Link href="/#all-calculators" className="hover:text-primary transition-colors">Income Tax & GST</Link></li>
                   <li><Link href="/#all-calculators" className="hover:text-primary transition-colors">Retirement & EPF Planning</Link></li>
-                </ul>
-              </div>
-
-              {/* Legal & Tech links */}
-              <div>
-                <h4 className="text-xs font-bold text-foreground uppercase tracking-wider mb-4">Sitemap & Meta</h4>
-                <ul className="space-y-2 text-xs text-muted-foreground">
-                  <li><Link href="/sitemap.xml" className="hover:text-primary transition-colors">XML Sitemap</Link></li>
-                  <li><span className="font-semibold">Current Year: 2026</span></li>
-                  <li><span className="font-semibold">Engine: Next.js 15 SSR</span></li>
-                  <li><span className="font-semibold">Tailwind CSS v4</span></li>
                 </ul>
               </div>
 

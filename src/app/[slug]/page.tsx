@@ -55,6 +55,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function parseMarkdownToHtml(markdown: string): string {
+  // Convert bold: **text** -> <strong>text</strong>
+  let html = markdown.replace(/\*\/(.*?)\*\//g, '<strong>$1</strong>'); // Wait, let's make sure it's the correct regex: /\*\*(.*?)\*\*/g
+  html = markdown.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  // Parse lines
+  const lines = html.split('\n');
+  const result: string[] = [];
+  let inList = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    
+    if (line.startsWith('- ')) {
+      const content = line.substring(2);
+      if (!inList) {
+        inList = true;
+        result.push('<ul class="list-disc pl-5 space-y-1.5 my-3">');
+      }
+      result.push(`<li class="ml-1">${content}</li>`);
+    } else {
+      if (inList) {
+        inList = false;
+        result.push('</ul>');
+      }
+      if (line === '') {
+        result.push('<div class="h-2"></div>');
+      } else {
+        result.push(`<p class="mb-2 leading-relaxed">${line}</p>`);
+      }
+    }
+  }
+
+  if (inList) {
+    result.push('</ul>');
+  }
+
+  return result.join('');
+}
+
 export default async function CalculatorPage({ params }: Props) {
   const { slug } = await params;
   const calc = getCalculatorBySlug(slug);
@@ -183,9 +223,9 @@ export default async function CalculatorPage({ params }: Props) {
               How the Calculation Works
             </h2>
             <div 
-              className="text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap prose dark:prose-invert max-w-none"
+              className="text-xs sm:text-sm text-muted-foreground leading-relaxed prose dark:prose-invert max-w-none"
               dangerouslySetInnerHTML={{
-                __html: calc.formulaDescription.replace(/\n/g, '<br/>')
+                __html: parseMarkdownToHtml(calc.formulaDescription)
               }}
             />
           </section>
