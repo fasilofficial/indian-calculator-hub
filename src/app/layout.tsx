@@ -4,6 +4,9 @@ import './globals.css';
 import ThemeToggle from '@/components/ThemeToggle';
 import Link from 'next/link';
 import { Calculator, Settings, BookOpen } from 'lucide-react';
+import { getCurrentYear } from '@/utils/date';
+
+const currentYear = getCurrentYear();
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -17,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Indian Calculator Hub: Free Financial, Tax & Loan Calculators 2026',
+    default: `Indian Calculator Hub: Free Financial, Tax & Loan Calculators ${currentYear}`,
     template: '%s | Indian Calculator Hub',
   },
   description: 'Access India\'s most comprehensive collection of financial, tax, salary, investment, loan, and utility calculators. Designed for Indian taxpayers, investors, and homeowners.',
@@ -114,28 +117,28 @@ export default function RootLayout({
         </main>
 
         {/* Global Footer */}
-        <footer className="w-full border-t border-border bg-muted/30 mt-auto py-12">
+        <footer className="w-full mt-auto py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               
               {/* About Column */}
-              <div className="space-y-4 md:col-span-2">
+              <div className="space-y-4 col-span-1">
                 <div className="flex items-center gap-2">
                   <div className="h-7 w-7 rounded-lg bg-primary flex items-center justify-center text-primary-foreground">
                     <Calculator className="h-4 w-4" />
                   </div>
                   <span className="font-extrabold text-sm text-foreground">Indian Calculator Hub</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed max-w-sm">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   The ultimate web platform for Indian taxpayers, salary earners, homeowners, and investors. Estimate returns, calculate liabilities, and optimize your personal finances instantly.
                 </p>
-                <div className="text-[10px] text-muted-foreground/80 leading-relaxed max-w-sm">
+                <div className="text-[10px] text-muted-foreground/80 leading-relaxed">
                   Disclaimer: All calculations provided here are for educational purposes. Please consult a registered financial advisor or tax consultant before making financial decisions.
                 </div>
               </div>
 
               {/* Category Links */}
-              <div>
+              <div className="col-span-1">
                 <h4 className="text-xs font-bold text-foreground uppercase tracking-wider mb-4">Categories</h4>
                 <ul className="space-y-2 text-xs text-muted-foreground">
                   <li><Link href="/#all-calculators" className="hover:text-primary transition-colors">Mutual Fund Investments</Link></li>
@@ -145,10 +148,21 @@ export default function RootLayout({
                 </ul>
               </div>
 
+              {/* Popular Tools Links */}
+              <div className="col-span-1">
+                <h4 className="text-xs font-bold text-foreground uppercase tracking-wider mb-4">Popular Tools</h4>
+                <ul className="space-y-2 text-xs text-muted-foreground">
+                  <li><Link href="/sip-calculator" className="hover:text-primary transition-colors">SIP Calculator</Link></li>
+                  <li><Link href="/emi-calculator" className="hover:text-primary transition-colors">EMI Calculator</Link></li>
+                  <li><Link href="/income-tax-calculator" className="hover:text-primary transition-colors">Income Tax Calculator</Link></li>
+                  <li><Link href="/salary-calculator" className="hover:text-primary transition-colors">Salary Calculator</Link></li>
+                </ul>
+              </div>
+
             </div>
 
-            <div className="border-t border-border/60 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-              <span>&copy; 2026 Indian Calculator Hub. All rights reserved.</span>
+            <div className="mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground border-t border-border/20">
+              <span>&copy; {currentYear} Indian Calculator Hub. All rights reserved.</span>
               <span>Made for Indian Investors &amp; Taxpayers</span>
             </div>
           </div>

@@ -133,6 +133,18 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color 0.3s, color 0.3s;
+  
+  /* Subtle repeating grid layout background */
+  background-image: 
+    linear-gradient(to right, rgba(9, 9, 11, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(9, 9, 11, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.dark body {
+  background-image: 
+    linear-gradient(to right, rgba(250, 250, 250, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(250, 250, 250, 0.015) 1px, transparent 1px);
 }
 
 /* Premium Custom Range Slider Styles */

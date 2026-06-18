@@ -203,9 +203,6 @@ export default async function CalculatorPage({ params }: Props) {
         </p>
       </div>
 
-      {/* Ad placement above calculation block */}
-      <AdSenseSlot id="calc-top-header" placement="header" />
-
       {/* React calculation component */}
       <div className="w-full">
         <CalculatorRenderer slug={calc.slug} />

@@ -153,11 +153,6 @@ export default function CalculatorRenderer({ slug }: CalculatorRendererProps) {
             })}
           </div>
         </div>
-
-        {/* Ad block below inputs for optimal monetization */}
-        <div className="mt-8 border-t border-border/60 pt-6">
-          <AdSenseSlot id="calc-in-feed" placement="above-results" />
-        </div>
       </div>
 
       {/* Results Column */}
